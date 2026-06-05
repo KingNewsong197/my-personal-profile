@@ -257,19 +257,15 @@ footer {
         margin-top: 40px;
     }
 
-    .full-name p {
-        letter-spacing: normal;      
-    }
-
     .football-club-image {
         height: 170px;
         width: 360px;
     }
 
     .full-name {
-        font-size: 0.75rem;
-        text-align: center;
-        width: 268px;
+        font-size: 0.8rem;
+        width: 220px;
+        border: 1px solid var(--muted);
     }
 
     .card {
