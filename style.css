@@ -1,0 +1,326 @@
+:root {
+    --bg: #0f172a;
+    --card: #111827;
+    --accent: #38bdf8;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: radial-gradient(circle at top, #132446, #020617);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+header {
+    padding: 60px 20px 20px;
+    text-align: center;
+    animation: fadeIn 1s ease forwards;
+}
+
+header h1 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+.line {
+    border: none;
+    height: 0.3px;
+    background-color: #484848;
+    margin: 5px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+   /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px; */
+}
+
+.card {
+    background: linear-gradient(180deg, #050e35, #020617);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transform: translateY(40px);
+    opacity: 0;
+    animation: slideUp 0.8s ease forwards;
+    margin-bottom: 20px; /* optional. Here because I changed display layout to flex */
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 16px;
+    background: linear-gradient(120deg, transparent, var(--accent), transparent);
+    opacity: 0.1;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.01);
+    transition: 0.3s ease;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent);
+    display: block;
+    margin: 10px auto;
+    animation: float 3s ease-in-out infinite;
+}
+
+.football-club-image {
+    width: 700px;
+    height: 300px;
+    border-radius: 5px;
+    object-fit: cover;
+    border: 2px solid #ffffff0d;
+}
+
+h2 {
+    margin-bottom: 10px;
+    color: var(--accent);
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 6px;
+    color: var(--muted);
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+@keyframes slideUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* FAVORITE FOOTBALLERS CARD CONTAINER */
+
+.players-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    scroll-behavior: smooth;
+    margin-top: 20px;
+}
+
+/* Scrollbar */
+
+.players-container::-webkit-scrollbar {
+    height: 5px;
+}
+
+.players-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border: 10px;
+}
+
+.players-container::-webkit-scrollbar-thumb {
+    background: cyan;
+    border-radius: 10px;
+}
+
+/* PLAYER CARD */
+
+.player-card {
+    width: 300px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: 5s;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+}
+
+.player-card:hover {
+    transform: 
+    translateY(-10px)
+    scale(1.03);
+
+    box-shadow: 0 0 25px cyan;
+
+    transition-duration: 1s;
+}
+
+/* PLAYER IMAGE */
+
+.player-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    transition: .6s;
+}
+
+.player-card:hover img {
+    transform: scale(1.1);
+}
+
+/* TEXT AREA */
+
+.card-content {
+    padding: 15px;
+}
+
+.card-content h3 {
+    color: white;
+    margin-bottom: 5px;
+    font-size: 22px;
+}
+
+.card-content p {
+    color: #ddd;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* EXPANDING SECTION */
+
+.full-info {
+    max-height: 0;
+    overflow-y: auto;
+    transition: .5s ease;
+    padding: 0 15px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* ACTIVATES ON CLICK */
+
+.player-card.active .full-info {
+    max-height: 200px;
+    padding: 15px;
+}
+
+/* MOBILE ADJUSTMENTS */
+
+@media(max-width: 768px) {
+    .player-card {
+        min-width: 220px;
+    }
+
+    .card-content h3 {
+        font-size: 18px;
+    }
+
+    .profile-img {
+        width: 120px;
+        height: 120px;
+        margin-top: 40px;
+    }
+
+    .full-name p {
+        letter-spacing: normal;      
+    }
+
+    .football-club-image {
+        height: 170px;
+        width: 360px;
+    }
+
+    .full-name {
+        font-size: 0.75rem;
+        text-align: center;
+        width: 268px;
+    }
+
+    .card {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+}
+
+/* FULL NAME */
+
+.full-name {
+   /* height: 30px;
+    width: 22em;*/
+    border: 2px solid var(--muted);
+    background: transparent;
+    border-radius: 20px;
+    display: block;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    color: var(--accent);
+    padding: 4px 15px;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-family: cursive;
+}
+
+.caption {
+    color: var(--text);
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.article {
+    color: var(--muted);
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
