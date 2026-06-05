@@ -254,7 +254,7 @@ footer {
     .profile-img {
         width: 120px;
         height: 120px;
-        margin-top: 40px;
+        margin-top: 45px;
     }
 
     .football-club-image {
@@ -263,8 +263,8 @@ footer {
     }
 
     .full-name {
-        font-size: 0.8rem;
-        width: 220px;
+        font-size: 1rem;
+        width: 210px;
         border: 1px solid var(--muted);
     }
 
